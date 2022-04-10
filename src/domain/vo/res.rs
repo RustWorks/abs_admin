@@ -1,6 +1,5 @@
 use crate::domain::domain::SysRes;
 use std::collections::HashMap;
-use chrono::Local;
 
 ///权限资源表
 #[crud_table(table_name: "sys_res" | table_columns: "id,parent_id,name,permission,path,del")]
@@ -27,21 +26,6 @@ impl From<SysRes> for SysResVO {
             name: arg.name,
             permission: arg.permission,
             path: arg.path,
-            del: arg.del,
-            create_date: arg.create_date,
-            childs: None,
-        }
-    }
-}
-
-impl From<&SysRes> for SysResVO {
-    fn from(arg: &SysRes) -> Self {
-        Self {
-            id: arg.id.clone(),
-            parent_id: arg.parent_id.clone(),
-            name: arg.name.clone(),
-            permission: arg.permission.clone(),
-            path: arg.path.clone(),
             del: arg.del,
             create_date: arg.create_date,
             childs: None,
